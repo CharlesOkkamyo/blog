@@ -69,6 +69,9 @@ class ArticleController extends Controller
             'title'=> 'required|max:255',
             'body' => 'required',
         ]);
+        if ($request->fails()) {
+            return back()->withErrors($request);
+        }
         $article= Article::find($id);
         $article->title = request()->title;
         $article->body = request()->body;
