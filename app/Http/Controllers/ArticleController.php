@@ -65,7 +65,7 @@ class ArticleController extends Controller
         return view('articles.edit', ['article'=> $data ], ['categories' => $categories]);
     }
     public function updateitem(Request $request, $id){
-        $request->validate([
+        $request = validator(request()->all(), [
             'title'=> 'required|max:255',
             'body' => 'required',
         ]);
